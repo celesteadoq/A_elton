@@ -1,0 +1,42 @@
+<header class="topbar">
+  <h1>Componentes Angular</h1>
+  <app-dropdown label="Ordenar produtos" [options]="sortOptions" (selected)="onSort($event)" />
+</header>
+
+<main class="layout">
+  <section class="panel">
+    <h2>Perguntas frequentes</h2>
+    <app-accordion [items]="faq" />
+  </section>
+  <section class="panel">
+  <h2>Conta</h2>
+  <app-tabs [tabs]="tabs" />
+</section>
+
+<section class="panel">
+  <h2>Envio de arquivo</h2>
+  <app-progress-bar [value]="progress()" />
+  <div class="actions">
+    
+    <button class="btn" (click)="startUpload()" [disabled]="uploading()">Enviar arquivo</button>
+    <button class="btn ghost" (click)="failUpload()">Simular erro</button>
+  </div>
+</section>
+<section class="panel wide">
+  <h2>Produtos</h2>
+  <input class="search" type="search" placeholder="Buscar produto"
+      [value]="search()" (input)="search.set($any($event.target).value); page.set(1)">
+  <ul class="products">
+    @for (p of pageItems(); track p.id) {
+      <li>
+        <span style="text-transform: uppercase">{{ p.name }}</span>
+        <small>{{ p.createdAt.toLocaleDateString('pt-BR') }}</small>
+        <strong>{{ p.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) }}</strong>
+      </li>
+    }
+  </ul>
+  <app-pagination [total]="totalPages()" [current]="page()" (pageChange)="setPage($event)" />
+</section>
+
+
+</main>

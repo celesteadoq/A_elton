@@ -1,0 +1,8 @@
+:root { --ink:#1b2437; --muted:#5d6779; --paper:#eef1f6; --card:#fff; --line:#d5dbe6;
+        --accent:#0e6b73; --ok:#1f7a4d; --err:#b3372f; --info:#2b5db5; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font:16px/1.5 "Segoe UI", system-ui, sans-serif; }
+button { font: inherit; cursor: pointer; }
+.btn { background:var(--accent); color:#fff; border:0; border-radius:6px; padding:8px 14px; }
+.btn:disabled { opacity:.5; cursor:not-allowed; }
+.btn.ghost { background:transparent; color:var(--accent); border:1px solid var(--accent); }
